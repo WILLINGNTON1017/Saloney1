@@ -1,0 +1,7 @@
+node_modules/
+.pnpm-store/
+data/
+backups/
+pnpm-lock.yaml
+public/assets/
+.env

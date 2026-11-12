@@ -1,0 +1,14 @@
+node_modules/
+.pnpm-store/
+.env
+data/
+backups/
+test-results/
+.sites-runtime/
+/tmp/
+/.tmp/
+/.build-strategy/
+/nextstep/
+/voz-temporal/
+/output/*
+!/output/saloney-despliegue.tar.gz

@@ -1,0 +1,189 @@
+:root[data-theme='dark'] {
+  color-scheme: dark;
+  color: #f4ebf7;
+  background: #19151f;
+  --pink: #ff83b1;
+  --pink-dark: #ee5c99;
+  --soft: #38243c;
+  --line: #514056;
+  --muted: #c2b3c9;
+  --green: #80dbaf;
+}
+[data-theme='dark']
+  :is(
+    .card,
+    .sidebar,
+    .topbar,
+    .public-header,
+    .auth-card,
+    dialog,
+    .service-card,
+    .booking-option,
+    .time-button,
+    input,
+    select,
+    textarea,
+    .stat-card
+  ) {
+  background: #251e2d;
+  color: #f4ebf7;
+  border-color: var(--line);
+}
+[data-theme='dark']
+  :is(
+    .welcome-card,
+    .auth-art,
+    .sidebar-note,
+    .detail-note,
+    .summary-line,
+    th,
+    .public-footer,
+    .hero
+  ) {
+  background: #322339;
+  color: #f4ebf7;
+}
+[data-theme='dark'] :is(h1, h2, h3, strong, label, .nav-link, .btn.outline) {
+  color: inherit;
+}
+[data-theme='dark'] .btn:not(.outline) {
+  color: #261221;
+}
+[data-theme='dark'] .muted {
+  color: var(--muted);
+}
+[data-theme='dark'] .nav-link.active {
+  background: #513048;
+  color: #ffadd0;
+}
+[hidden] {
+  display: none !important;
+}
+[data-theme='dark'] .btn.outline {
+  background: #302437;
+  color: #ffd4e8;
+}
+.account-social {
+  margin-top: 30px;
+}
+
+/* Cada superficie clara necesita también su color de texto en el tema nocturno. */
+[data-theme='dark']
+  :is(.modal-head, .donut-hole, .week-day, .step span, .appointment-card, .date-chip) {
+  background: #2b2335;
+  color: #f4ebf7;
+  border-color: var(--line);
+}
+[data-theme='dark'] :is(.profile-card, .sidebar-note) {
+  background: linear-gradient(135deg, #30253e, #43283d);
+}
+[data-theme='dark'] :is(.week-day.today, .booking-option.selected, .nav-link:hover) {
+  background: #493047;
+  color: #ffe1ef;
+}
+[data-theme='dark']
+  :is(.hero h1, .hero p, .welcome-card p, .topbar-label, .topbar-label strong, .card h2) {
+  color: #ead9ed;
+}
+[data-theme='dark'] .hero::after {
+  background: linear-gradient(90deg, #291d32 20%, #291d32f5 48%, #291d3280 75%, #291d3240);
+}
+@media (max-width: 700px) {
+  [data-theme='dark'] .hero::after {
+    background: linear-gradient(90deg, #291d32f5, #291d32de);
+  }
+}
+[data-theme='dark'] :is(.social-card, .demo-note) {
+  background: #382b43;
+  color: #ffd4e8;
+  border-color: #70536d;
+}
+[data-theme='dark'] .social-card strong {
+  color: #fff0f8;
+}
+[data-theme='dark'] :is(input, textarea)::placeholder {
+  color: #bbaac5;
+  opacity: 1;
+}
+[data-theme='dark'] input:autofill {
+  -webkit-text-fill-color: #f4ebf7;
+  box-shadow: 0 0 0 1000px #2b2335 inset;
+}
+[data-theme='dark']
+  :is(.step.current span, .step.done span, .calendar-day.selected, .time-button.selected) {
+  background: #ff94c0;
+  color: #301526;
+  border-color: #ff94c0;
+}
+[data-theme='dark'] .btn:hover {
+  background: #ffadd0;
+  color: #301526;
+}
+[data-theme='dark'] .btn.outline:hover {
+  background: #52354c;
+  color: #fff0f8;
+}
+[data-theme='dark'] .btn.danger {
+  background: #552b3d;
+  color: #ffc4d4;
+  border-color: #a8667c;
+}
+[data-theme='dark'] :is(.form-error, .notice) {
+  background: #483447;
+  color: #ffdaaf;
+}
+[data-theme='dark'] .week-event {
+  background: #244338;
+  color: #c9f1da;
+  border-color: #49765e;
+}
+[data-theme='dark'] .week-event:nth-child(2n) {
+  background: #413151;
+  color: #e5cffa;
+  border-color: #785891;
+}
+[data-theme='dark'] :is(.stat-icon, .stat-icon.purple) {
+  background: #443052;
+  color: #e4bcff;
+}
+[data-theme='dark'] :is(.stat-icon.green, .success-icon) {
+  background: #244338;
+  color: #abedcb;
+}
+[data-theme='dark'] .stat-icon.orange {
+  background: #4b3a28;
+  color: #ffdb9b;
+}
+[data-theme='dark'] .badge {
+  background: #493a24;
+  color: #ffe0a1;
+}
+[data-theme='dark'] :is(.badge.confirmada, .badge.activo, .badge.pagado) {
+  background: #244338;
+  color: #b8efd0;
+}
+[data-theme='dark'] .badge.en-proceso {
+  background: #293b58;
+  color: #c7dcff;
+}
+[data-theme='dark'] .badge.finalizada {
+  background: #443052;
+  color: #e4c9ff;
+}
+[data-theme='dark'] :is(.badge.cancelada, .badge.rechazada, .badge.inactivo) {
+  background: #512d3b;
+  color: #ffc5d5;
+}
+[data-theme='dark'] :focus-visible {
+  outline: 3px solid #deb4ff;
+  outline-offset: 3px;
+}
+
+.badge.no-asistió {
+  background: #f3e6d2;
+  color: #704400;
+}
+[data-theme='dark'] .badge.no-asistió {
+  background: #493925;
+  color: #ffd89d;
+}

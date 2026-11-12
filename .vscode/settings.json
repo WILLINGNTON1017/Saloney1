@@ -1,0 +1,31 @@
+{
+  "editor.tabSize": 2,
+  "files.encoding": "utf8",
+  "files.insertFinalNewline": true,
+  "[javascript][json][jsonc][html][css][markdown]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+  "search.exclude": {
+    "**/node_modules": true,
+    "**/.pnpm-store": true,
+    "data/**": true,
+    "backups/**": true,
+    "**/pnpm-lock.yaml": true
+  },
+  "files.watcherExclude": {
+    "**/data/**": true,
+    "**/backups/**": true,
+    "**/.pnpm-store/**": true
+  },
+  "explorer.sortOrder": "type",
+  "explorer.compactFolders": false,
+  "workbench.editor.enablePreview": false,
+  "editor.wordWrap": "on",
+  "editor.minimap.enabled": false,
+  "breadcrumbs.enabled": true,
+  "files.exclude": {
+    "**/node_modules": true,
+    "**/.pnpm-store": true
+  }
+}

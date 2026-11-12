@@ -1,0 +1,31 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "SALONEY: iniciar",
+      "type": "process",
+      "command": "node",
+      "args": ["scripts/start.js"],
+      "options": { "cwd": "${workspaceFolder}" },
+      "problemMatcher": []
+    },
+    {
+      "label": "SALONEY: comprobar codigo",
+      "type": "process",
+      "command": "node",
+      "args": ["scripts/check.js"],
+      "options": { "cwd": "${workspaceFolder}" },
+      "group": { "kind": "build", "isDefault": true },
+      "problemMatcher": []
+    },
+    {
+      "label": "SALONEY: pruebas",
+      "type": "process",
+      "command": "node",
+      "args": ["--test", "tests/integration.test.js"],
+      "options": { "cwd": "${workspaceFolder}" },
+      "group": "test",
+      "problemMatcher": []
+    }
+  ]
+}
