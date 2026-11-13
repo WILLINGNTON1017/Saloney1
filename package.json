@@ -1,0 +1,27 @@
+{
+  "name": "saloney",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Sistema de reservas y administración para SALONEY",
+  "scripts": {
+    "start": "node --env-file-if-exists=.env scripts/start.js --open",
+    "dev": "node --watch --env-file-if-exists=.env scripts/start.js",
+    "test": "node --test tests/*.test.js",
+    "test:mysql": "node --env-file=.env scripts/test-mysql.js",
+    "backup": "node --env-file-if-exists=.env scripts/backup.js",
+    "check": "node scripts/check.js",
+    "format": "prettier --write public server scripts tests docs README.md package.json .vscode .prettierrc.json SALONEY.code-workspace",
+    "format:check": "prettier --check public server scripts tests docs README.md package.json .vscode .prettierrc.json SALONEY.code-workspace"
+  },
+  "engines": {
+    "node": ">=24"
+  },
+  "dependencies": {
+    "mysql2": "3.14.5",
+    "pdfkit": "0.20.2"
+  },
+  "devDependencies": {
+    "prettier": "3.9.6"
+  }
+}

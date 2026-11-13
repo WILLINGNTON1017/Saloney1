@@ -1,0 +1,10 @@
+*
+!Dockerfile
+!package.json
+!pnpm-lock.yaml
+!public/
+!public/**
+!server/
+!server/**
+!database/
+!database/schema.sql
