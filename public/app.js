@@ -543,7 +543,7 @@ function suppliesPage() {
   const active = state.supplies.filter(s => !s.exhausted_at);
   const finished = state.supplies.filter(s => s.exhausted_at);
   const rows = (items, done) => table(['Producto', 'Manicurista', 'Cantidad', 'Costo de compra', done ? 'Fecha de agotamiento' : 'Acción'], items.map(s => [esc(s.product_name), esc(s.professional_name), s.quantity + ' ' + esc(s.unit), money(s.quantity * s.unit_cost), done ? esc(new Date(s.exhausted_at).toLocaleString('es-CO', { timeZone: SALON_TIME_ZONE })) : button('Se acabó', 'finish-supply', `data-id="${s.id}"`, 'outline small')]));
-  return `${title(state.user.role === 'admin' ? 'Productos en uso' : 'Mis productos', 'Elige los productos que necesitas y marca cada uno cuando se termine.', button(state.supplies.length ? '＋ Solicitar productos' : '＋ Elegir mis primeros productos', 'take-supply'))}<p class="notice">Los productos se descuentan del almacén al confirmar tu solicitud. Cuando se terminen, márcalos como agotados y solicita los que necesites reponer.</p><section class="card spaced"><h2>En uso</h2>${active.length ? rows(active, false) : empty('Todavía no hay productos en uso.')}</section><section class="card spaced"><h2>Productos agotados</h2>${finished.length ? rows(finished, true) : empty('Todavía no se han registrado productos agotados.')}</section>`;
+  return `${title(state.user.role === 'admin' ? 'Productos en uso' : 'Mis productos', '', button(state.supplies.length ? '＋ Solicitar productos' : '＋ Elegir mis primeros productos', 'take-supply'))}<section class="card spaced"><h2>En uso</h2>${active.length ? rows(active, false) : empty('Todavía no hay productos en uso.')}</section><section class="card spaced"><h2>Productos agotados</h2>${finished.length ? rows(finished, true) : empty('Todavía no se han registrado productos agotados.')}</section>`;
 }
 function inventory() {
   return `${title('Inventario', 'Controla tus productos y cada entrada o salida.', button('＋ Nuevo producto', 'edit-product'))}<section class="card"><div class="table-toolbar"><input id="search" placeholder="Buscar producto…" aria-label="Buscar producto" value="${esc(search)}">${button('Ver movimientos', 'movements', '', 'outline')}</div>${state.products.some((p) => p.active && p.stock <= p.minimum) ? `<div class="notice">${icon('box')} Hay ${state.products.filter((p) => p.active && p.stock <= p.minimum).length} productos en el nivel mínimo o por debajo.</div>` : ''}<div id="list-content">${inventoryTable()}</div></section>`;
@@ -1108,7 +1108,7 @@ async function handleAction(el) {
       ).join('');
       return `<div data-supply-group="${esc(category)}" hidden><div class="form-stack">${fields}</div></div>`;
     }).join('');
-    openModal('Solicitar productos', `<form data-form="take-supply" class="form-stack">${state.user.role === 'admin' ? select('Manicurista', 'professional_id', state.professionals.map(p => [p.id, p.name])) : ''}${select('Categoría', 'category', [['', 'Selecciona una categoría'], ...categories], '', 'required')}${groups}<p class="inline-note">Puedes agregar productos de varias categorías antes de confirmar.${state.products.some(p => p.active && p.stock > 0 && p.unit === 'caja' && !p.box_size) ? ' Para solicitar artículos de una caja, registra primero las unidades por caja en Inventario.' : ''} Al confirmar se descontarán del almacén.</p><div class="form-error"></div><button class="btn">Confirmar solicitud y descontar</button></form>`);
+    openModal('Solicitar productos', `<form data-form="take-supply" class="form-stack">${state.user.role === 'admin' ? select('Manicurista', 'professional_id', state.professionals.map(p => [p.id, p.name])) : ''}${select('Categoría', 'category', [['', 'Selecciona una categoría'], ...categories], '', 'required')}${groups}<div class="form-error"></div><button class="btn">Confirmar solicitud y descontar</button></form>`);
     const picker = modal.querySelector('[name="category"]');
     picker.addEventListener('change', () => {
       const visible = picker.form.querySelector('[data-supply-group]:not([hidden])');
@@ -1126,7 +1126,7 @@ async function handleAction(el) {
   }
   if (action === 'finish-supply') {
     const supply = state.supplies.find(s => s.id === id);
-    openModal('Confirmar que el producto se acabó', `<form data-form="finish-supply" data-id="${id}" class="form-stack"><p>Marcarás como agotados ${supply.quantity} ${esc(supply.unit)} de ${esc(supply.product_name)}. Ya se descontaron al solicitarlos; no se descontarán otra vez.</p><p class="inline-note">Confirma solamente si se terminó todo el producto indicado.</p><div class="form-error"></div><button class="btn">Sí, se acabó</button></form>`);
+    openModal('Confirmar que el producto se acabó', `<form data-form="finish-supply" data-id="${id}" class="form-stack"><p>Marcarás como agotados ${supply.quantity} ${esc(supply.unit)} de ${esc(supply.product_name)}.</p><div class="form-error"></div><button class="btn">Sí, se acabó</button></form>`);
     return;
   }
   if (action === 'show-password') {
